@@ -1,0 +1,29 @@
+canonical_variable,fallback_tier,xbrl_tag_or_formula,statement_type,unit,economic_rationale,transformation
+revenue,Tier 1,RevenueFromContractWithCustomerExcludingAssessedTax,Income Statement,USD,Standard ASC 606 post-2018 operating revenue from contracts,None
+revenue,Tier 2A,SalesRevenueNet,Income Statement,USD,Pre-2018 standard net revenue/sales; also Caterpillar ongoing standard,None
+revenue,Tier 2B,Revenues,Income Statement,USD,"Consolidated gross/operating revenues for diversified firms (MRK, MCD, EOG)",None
+revenue,Tier 2C,TotalRevenuesAndOtherIncome,Income Statement,USD,Broad revenue definition including incidental operating income,None
+ebit,Tier 1,OperatingIncomeLoss,Income Statement,USD,Standard operating income before interest and taxes,None
+ebit,Tier 2A,IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments,Income Statement,USD,"Pre-tax income from continuing ops for firms without direct EBIT (PFE, CVX, COP)",EBT + InterestExpense
+ebit,Tier 2B,IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,Income Statement,USD,"Multi-step pre-tax income for energy/conglomerates (XOM, MRK)",EBT + InterestExpense
+ebit,Tier 4A,GrossProfit - SellingGeneralAndAdministrativeExpense,Income Statement,USD,Derived operating income for retail/apparel presentation (NKE),GP - SGA
+net_income,Tier 1,NetIncomeLoss,Income Statement,USD,Standard net income attributable to parent shareholders,None
+net_income,Tier 2A,ProfitLoss,Income Statement,USD,Consolidated net income including non-controlling interest (CAT),None
+cash,Tier 1,CashAndCashEquivalentsAtCarryingValue,Balance Sheet,USD,Standard balance sheet cash and cash equivalents,None
+cash,Tier 2A,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,Statement of Cash Flows,USD,Cash including restricted cash on cash flow statement,None
+assets,Tier 1,Assets,Balance Sheet,USD,Universal total assets,None
+equity,Tier 1,StockholdersEquity,Balance Sheet,USD,Standard total shareholders equity,None
+equity,Tier 2A,StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest,Balance Sheet,USD,Consolidated equity including noncontrolling interest (CAT),None
+debt_long,Tier 1,LongTermDebtNoncurrent,Balance Sheet,USD,Standard long-term debt non-current,None
+debt_long,Tier 2A,LongTermDebt,Balance Sheet,USD,Consolidated long-term debt obligations,None
+cfo,Tier 1,NetCashProvidedByUsedInOperatingActivities,Statement of Cash Flows,USD,Universal cash flows from operating activities,None
+capex,Tier 1,PaymentsToAcquirePropertyPlantAndEquipment,Statement of Cash Flows,USD,Standard cash capital expenditures,|val| (abs)
+capex,Tier 2A,PaymentsToAcquireProductiveAssets,Statement of Cash Flows,USD,"Alternative tangible productive asset investments (CVX, NVDA post-2023)",|val| (abs)
+capex,Tier 2B,PaymentsToAcquirePropertyPlantAndEquipmentAndSoftware,Statement of Cash Flows,USD,PPE plus capitalized software investments,|val| (abs)
+capex,Tier 2C,PaymentsToAcquireOilAndGasPropertyAndEquipment,Statement of Cash Flows,USD,E&P upstream exploration & development capex (EOG),|val| (abs)
+capex,Tier 3,nvda:PurchasesOfPropertyAndEquipmentAndIntangibleAssets,Statement of Cash Flows,USD,NVIDIA company extension tag for pre-2024 cash capex,|val| (abs)
+capex,Tier 4A,NetPPE_t - NetPPE_t-1 + D&A_t,Derived,USD,Derived balance-sheet capex proxy if cash-flow item is missing,Derived
+da,Tier 1,DepreciationDepletionAndAmortization,Statement of Cash Flows,USD,Standard D&A non-cash add-back,None
+da,Tier 2A,DepreciationAndAmortization,Statement of Cash Flows,USD,Alternative D&A statement line,None
+da,Tier 2B,DepreciationAmortizationAndAccretionNet,Statement of Cash Flows,USD,D&A including accretion of discounts,None
+da,Tier 2C,Depreciation,Statement of Cash Flows,USD,Depreciation alone when amortization is reported separately,None

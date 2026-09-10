@@ -1,0 +1,51 @@
+ticker,company_name,sector,valuation_date,baseline_fair_value,enhanced_fair_value,fair_value_diff,pct_change,market_price,baseline_upside,enhanced_upside,primary_category,intensity,key_assumption,adjustment,evidence_citation
+AAPL,Apple Inc.,Information Technology,2024-12-31,93.66,90.06,-3.6,-3.84,250.4,-0.626,-0.6403,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""Additionally, strengthening of foreign currencies may increase the Company's cost of product components denominated in t..."""
+ABT,Abbott Laboratories,Health Care,2024-12-31,50.52,46.67,-3.85,-7.62,113.8,-0.5561,-0.5899,MARGIN_PRESSURE,0.6198,ebit_margins,-0.0093,"Item 7 MD&A: ""Additional risks associated with Abbott's international operations include:
+
+•differing local product preferences and pr..."""
+AMZN,"Amazon.com, Inc.",Consumer Discretionary,2024-12-31,46.48,43.05,-3.43,-7.38,219.4,-0.7882,-0.8038,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""The North America operating loss in 2022, as compared to the operating income in the prior year, is primarily due to inc..."""
+CAT,Caterpillar Inc.,Industrials,2024-12-31,330.26,322.4,-7.86,-2.38,395.0,-0.1639,-0.1838,MARGIN_PRESSURE,0.3053,ebit_margins,-0.005,"Item 7 MD&A: ""Government policies on international trade and investment such as import quotas, capital controls or tariffs, whether ad..."""
+COP,ConocoPhillips,Energy,2024-12-31,224.47,221.63,-2.84,-1.27,104.8,1.1419,1.1148,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""Prices and margins in our industry have historically been volatile and are driven by market conditions over which we hav..."""
+COST,Costco Wholesale Corp.,Consumer Staples,2024-12-31,239.67,161.91,-77.76,-32.44,918.0,-0.7389,-0.8236,MARGIN_PRESSURE,0.6198,ebit_margins,-0.0093,"Item 7 MD&A: ""operations, particularly in California, and our Canadian operations could arise from, among other things: slow growth or..."""
+CSCO,"Cisco Systems, Inc.",Information Technology,2024-12-31,43.29,42.25,-1.04,-2.4,58.75,-0.2631,-0.2809,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""A summary of our results is as follows (in millions, except percentages and per-share amounts):
+
+Three Months EndedYears..."""
+CVX,Chevron Corp.,Energy,2024-12-31,183.58,172.11,-11.47,-6.25,149.2,0.2305,0.1536,REGULATORY_RISK,1.0,wacc_discount_rate,0.005,"Item 1A / Item 3: ""Political instability and significant changes in the legal and regulatory environment could harm Chevron's business The ..."""
+EOG,"EOG Resources, Inc.",Energy,2024-12-31,149.77,143.79,-5.98,-3.99,124.5,0.2029,0.1549,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""Our failure to recover our investment in wells, increases in the costs of our drilling and completions operations or tho..."""
+HD,"Home Depot, Inc.",Consumer Discretionary,2024-12-31,237.15,226.6,-10.55,-4.45,398.2,-0.4044,-0.4309,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""The decrease in gross profit margin was primarily driven by higher product and transportation costs, pressure from shrin..."""
+HON,Honeywell International Inc.,Industrials,2024-12-31,136.23,136.23,0.0,0.0,214.2,-0.364,-0.364,NONE,0.0,none,0.0,No material qualitative adjustment triggered.
+INTC,Intel Corp.,Information Technology,2024-12-31,-24.73,-24.28,0.45,-1.82,20.06,-2.2329,-2.2104,LITIGATION_RISK,0.3053,wacc_discount_rate,0.0025,"Item 1A / Item 3: ""Cybersecurity
+
+Page 65-66
+
+Item 2.Properties
+Pages 14, 66
+
+Item 3.Legal Proceedings
+Pages 108-111
+
+Item 4.Mine Safety Di..."""
+JNJ,Johnson & Johnson,Health Care,2024-12-31,52.61,51.66,-0.95,-1.81,144.6,-0.6362,-0.6427,MARGIN_PRESSURE,0.3053,ebit_margins,-0.005,"Item 7 MD&A: ""While the Company strives to maintain profit margins in these areas through cost reduction programs, productivity improv..."""
+KO,Coca-Cola Co.,Consumer Staples,2024-12-31,31.1,30.02,-1.08,-3.47,62.4,-0.5016,-0.5189,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""Generally, finished product operations generate higher net operating revenues but lower gross profit margins than concen..."""
+LMT,Lockheed Martin Corp.,Industrials,2024-12-31,532.56,461.37,-71.19,-13.37,458.0,0.1628,0.0074,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""The technical complexity coupled with the fixed-price contract structure of certain of our ongoing development programs ..."""
+LOW,"Lowe's Companies, Inc.",Consumer Discretionary,2024-12-31,197.61,178.76,-18.85,-9.54,268.0,-0.2627,-0.333,MARGIN_PRESSURE,0.6198,ebit_margins,-0.0093,"Item 7 MD&A: ""The impact to our business, including net sales and gross margin, will be influenced in part by merchandising and pricin..."""
+MCD,McDonald's Corp.,Consumer Discretionary,2024-12-31,190.01,190.01,0.0,0.0,291.5,-0.3482,-0.3482,NONE,0.0,none,0.0,No material qualitative adjustment triggered.
+MMM,3M Co.,Industrials,2024-12-31,147.01,137.39,-9.62,-6.54,129.5,0.1352,0.0609,MARGIN_PRESSURE,1.0,ebit_margins,-0.012,"Item 7 MD&A: ""Margins were also impacted by increased raw materials and logistics costs, manufacturing productivity headwinds which we..."""
+MRK,"Merck & Co., Inc.",Health Care,2024-12-31,98.69,95.9,-2.79,-2.83,98.7,-0.0001,-0.0284,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""Global efforts toward health care cost containment continue to exert pressure on product pricing and market access world..."""
+MSFT,Microsoft Corp.,Information Technology,2024-12-31,96.19,94.04,-2.15,-2.24,421.5,-0.7718,-0.7769,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""Commercial remaining performance obligation
+
+Commercial portion of revenue allocated to remaining performance obligation..."""
+NKE,"Nike, Inc.",Consumer Discretionary,2024-12-31,63.08,57.07,-6.01,-9.53,74.8,-0.1566,-0.237,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""or other countries' trade policies and tariff and import/export regulations or our failure to comply with such regulatio..."""
+NVDA,NVIDIA Corp.,Information Technology,2024-12-31,13.18,12.89,-0.29,-2.2,134.3,-0.9018,-0.904,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""Any such defect may cause us to incur significant warranty, support and repair or replacement costs as part of a product..."""
+PEP,"PepsiCo, Inc.",Consumer Staples,2024-12-31,137.71,128.95,-8.76,-6.36,153.2,-0.1011,-0.1583,SUPPLY_CHAIN_RISK,0.985,revenue_growth_rates,-0.01,"Item 1A Risk Factors: ""In addition, risk to our supply of certain raw materials is mitigated through purchases from multiple geographies and su..."""
+PFE,Pfizer Inc.,Health Care,2024-12-31,22.41,21.41,-1.0,-4.46,25.8,-0.1313,-0.1702,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""•Achieve world-class oncology leadership
+
+•Deliver next wave of pipeline innovation
+
+•Maximize performance of our new pr..."""
+PG,Procter & Gamble Co.,Consumer Staples,2024-12-31,154.0,145.0,-9.0,-5.84,168.5,-0.0861,-0.1395,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""Changes in the political conditions in markets in which we manufacture, sell or distribute our products, as well as chan..."""
+SLB,SLB Ltd.,Energy,2024-12-31,57.61,53.67,-3.94,-6.84,39.8,0.4474,0.3485,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""Overall, the combination of these effects will result in a very favorable mix for SLB with significant growth opportunit..."""
+TMO,Thermo Fisher Scientific Inc.,Health Care,2024-12-31,177.59,168.83,-8.76,-4.93,512.4,-0.6534,-0.6705,MARGIN_PRESSURE,0.33,ebit_margins,-0.005,"Item 7 MD&A: ""Segment income margin in 2021 was also impacted by a $13 million credit to cost of product revenue as a result of changi..."""
+UNP,Union Pacific Corp.,Industrials,2024-12-31,156.18,153.14,-3.04,-1.95,232.0,-0.3268,-0.3399,MARGIN_PRESSURE,0.3053,ebit_margins,-0.005,"Item 7 MD&A: ""Execution of our strategy to be the industry leader in both safety and service leads to revenue growth with improved mar..."""
+WMT,Walmart Inc.,Consumer Staples,2024-12-31,33.87,20.23,-13.64,-40.27,89.9,-0.6233,-0.775,MARGIN_PRESSURE,0.6198,ebit_margins,-0.0093,"Item 7 MD&A: ""We expect continued uncertainty in our business and the global economy due to inflationary trends; swings in macroeconom..."""
+XOM,Exxon Mobil Corp.,Energy,2024-12-31,148.02,135.46,-12.56,-8.49,108.5,0.3642,0.2485,MARGIN_PRESSURE,0.925,ebit_margins,-0.012,"Item 7 MD&A: ""This means ExxonMobil's operations and earnings may be significantly affected by changes in oil, gas, and petrochemical ..."""

@@ -1,0 +1,31 @@
+ticker,sector,quarterly_observations,annual_observations,ltm_observations,total_features,available_features,unresolved_features,feature_completeness_pct,nopat_count,roic_count,fcf_count,net_debt_count
+AAPL,Information Technology,44,11,41,1155,1127,28,97.6,52,52,96,96
+MSFT,Information Technology,44,11,41,1155,1127,28,97.6,52,52,96,96
+NVDA,Information Technology,38,10,31,895,743,152,83.0,41,41,22,77
+INTC,Information Technology,44,11,41,1155,1155,0,100.0,52,52,96,96
+CSCO,Information Technology,44,11,41,1155,1139,16,98.6,52,52,96,96
+JNJ,Health Care,44,11,41,1151,935,216,81.2,52,52,96,96
+PFE,Health Care,44,11,41,1151,955,196,83.0,52,52,96,96
+ABT,Health Care,44,11,41,1155,1131,24,97.9,52,52,96,96
+MRK,Health Care,44,11,41,1151,947,204,82.3,52,52,96,96
+TMO,Health Care,44,11,41,1155,1079,76,93.4,52,52,96,96
+WMT,Consumer Staples,40,10,37,1043,1019,24,97.7,47,47,87,87
+PG,Consumer Staples,44,11,41,1155,1127,28,97.6,52,52,96,96
+KO,Consumer Staples,44,11,41,1151,935,216,81.2,52,52,96,96
+PEP,Consumer Staples,44,11,41,1155,1151,4,99.7,52,52,96,96
+COST,Consumer Staples,43,10,37,1044,1020,24,97.7,47,47,90,90
+AMZN,Consumer Discretionary,44,11,41,1155,1089,66,94.3,52,52,82,96
+HD,Consumer Discretionary,44,11,41,1155,1131,24,97.9,52,52,96,96
+NKE,Consumer Discretionary,44,11,41,1155,1155,0,100.0,52,52,96,96
+MCD,Consumer Discretionary,44,11,41,1155,1069,86,92.6,52,52,96,96
+LOW,Consumer Discretionary,44,11,41,1155,1155,0,100.0,52,52,96,96
+CAT,Industrials,44,11,41,1155,1094,61,94.7,52,52,96,63
+MMM,Industrials,44,11,41,1155,1127,28,97.6,52,52,96,96
+HON,Industrials,42,10,36,1018,994,24,97.6,46,46,88,88
+UNP,Industrials,44,11,41,1155,1049,106,90.8,52,52,96,96
+LMT,Industrials,44,11,41,1155,1131,24,97.9,52,52,96,96
+XOM,Energy,44,11,41,1155,910,245,78.8,52,52,96,96
+CVX,Energy,44,11,41,1155,1103,52,95.5,52,52,96,78
+COP,Energy,44,11,41,1155,980,175,84.8,37,37,62,96
+SLB,Energy,44,11,41,1155,1098,57,95.1,52,52,96,93
+EOG,Energy,44,11,41,1155,1035,120,89.6,52,52,96,96

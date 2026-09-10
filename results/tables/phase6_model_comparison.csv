@@ -1,0 +1,4 @@
+experiment_id,target_name,sample_size,baseline_mae,enhanced_mae,delta_mae,pct_mae_improvement,baseline_rmse,enhanced_rmse,delta_rmse,baseline_r2,enhanced_r2,delta_r2,p_value_paired_t,p_value_permutation,ci_delta_mae_low,ci_delta_mae_high,is_statistically_significant
+exp_forward_ebit_margin_change,forward_ebit_margin_change,30,0.11371,0.14362,-0.02991,-26.3,0.18379,0.1919,-0.00812,-1.0077,-1.1889,-0.1812,0.1613,0.1959,-0.0701,0.01203,False
+exp_forward_revenue_growth,forward_revenue_growth,30,0.46239,0.53846,-0.07607,-16.45,0.83481,0.78946,0.04534,-0.9274,-0.7237,0.2037,0.1852,0.2029,-0.18736,0.04291,False
+exp_earnings_deterioration,earnings_deterioration,30,0.52812,0.45537,0.07275,13.78,0.58003,0.55691,0.02312,-0.4488,-0.3356,0.1132,0.1333,0.1419,-0.01689,0.16732,False

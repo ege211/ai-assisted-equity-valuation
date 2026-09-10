@@ -1,0 +1,31 @@
+ticker,sector,base_wacc,base_g,base_fair_value,wacc_minus_100bps_fv,wacc_plus_100bps_fv,g_minus_100bps_fv,g_plus_100bps_fv,growth_plus200_margin_plus200_fv,growth_minus200_margin_minus200_fv,monotonic_wacc,monotonic_terminal_growth,monotonic_growth_shift,monotonic_margin_shift
+AAPL,Information Technology,0.099365,0.025,93.66,94.26,70.08,74.07,88.49,109.43,79.57,True,True,True,True
+ABT,Health Care,0.080992,0.025,50.52,58.12,38.17,40.56,54.14,63.61,39.09,True,True,True,True
+AMZN,Consumer Discretionary,0.106761,0.025,46.48,46.39,36.28,38.05,43.93,66.6,29.03,True,True,True,True
+CAT,Industrials,0.1032,0.025,330.26,325.3,251.15,264.29,306.59,387.58,279.51,True,True,True,True
+COP,Energy,0.093109,0.025,224.47,242.77,178.3,186.27,231.34,257.6,194.7,True,True,True,True
+COST,Consumer Staples,0.084789,0.025,239.67,231.06,168.84,178.28,216.37,451.6,58.95,True,True,True,True
+CSCO,Information Technology,0.087596,0.025,43.29,48.3,33.19,35.12,45.28,52.53,35.12,True,True,True,True
+CVX,Energy,0.0907,0.025,183.58,168.5,126.27,133.35,158.04,226.31,146.15,True,True,True,True
+EOG,Energy,0.102773,0.025,149.77,152.58,117.81,123.44,144.62,173.24,128.81,True,True,True,True
+HD,Consumer Discretionary,0.089998,0.025,237.15,268.4,181.68,192.22,252.68,307.0,176.04,True,True,True,True
+HON,Industrials,0.083262,0.025,136.23,165.82,108.48,113.55,158.36,170.23,106.3,True,True,True,True
+INTC,Information Technology,0.082767,0.025,-24.73,-30.07,-24.6,-24.56,-30.41,-22.24,-24.85,False,False,False,True
+JNJ,Health Care,0.072145,0.025,52.61,63.11,36.58,39.21,58.32,63.02,43.33,True,True,True,True
+KO,Consumer Staples,0.071976,0.025,31.1,40.54,22.92,24.36,38.0,39.9,23.37,True,True,True,True
+LMT,Industrials,0.074228,0.025,532.56,670.83,415.22,436.58,634.71,711.5,377.5,True,True,True,True
+LOW,Consumer Discretionary,0.088984,0.025,197.61,238.53,159.89,167.54,227.64,264.15,139.53,True,True,True,True
+MCD,Consumer Discretionary,0.070728,0.025,190.01,245.16,137.81,146.04,230.98,229.11,155.16,True,True,True,True
+MMM,Industrials,0.086543,0.025,147.01,172.75,120.14,125.48,164.8,178.11,119.57,True,True,True,True
+MRK,Health Care,0.070643,0.025,98.69,126.87,75.95,80.15,119.19,120.79,79.25,True,True,True,True
+MSFT,Information Technology,0.09757,0.025,96.19,99.02,72.74,77.02,92.69,113.37,80.94,True,True,True,True
+NKE,Consumer Discretionary,0.092119,0.025,63.08,62.59,46.92,49.19,59.28,78.13,49.95,True,True,True,True
+NVDA,Information Technology,0.127896,0.025,13.18,11.71,9.7,10.13,11.15,14.58,11.91,True,True,True,True
+PEP,Consumer Staples,0.064251,0.025,137.71,178.94,97.62,103.04,168.71,190.96,91.63,True,True,True,True
+PFE,Health Care,0.066878,0.025,22.41,35.7,18.52,18.8,35.94,29.57,16.15,True,True,True,True
+PG,Consumer Staples,0.066907,0.025,154.0,196.24,111.33,119.28,179.57,187.24,124.7,True,True,True,True
+SLB,Energy,0.096071,0.025,57.61,65.89,48.18,50.13,63.2,69.6,47.01,True,True,True,True
+TMO,Health Care,0.08267,0.025,177.59,228.57,132.86,141.59,215.35,230.71,131.03,True,True,True,True
+UNP,Industrials,0.082938,0.025,156.18,194.45,122.86,129.24,184.95,188.74,127.11,True,True,True,True
+WMT,Consumer Staples,0.071614,0.025,33.87,39.89,23.81,25.56,36.57,70.6,2.68,True,True,True,True
+XOM,Energy,0.086981,0.025,148.02,150.69,108.81,114.41,142.24,183.91,116.59,True,True,True,True

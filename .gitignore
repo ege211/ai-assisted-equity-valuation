@@ -1,0 +1,39 @@
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Environment / OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.env
+.env.*
+
+# Local Data Caches and Binary Stores (Regenerable via pipelines)
+data/raw_sec/
+data/market/
+data/raw_filings/
+data/sec_cache/
+*.duckdb
+*.duckdb.wal
+
+# Scratch and Temporary Artifacts
+scratch/
+*.log
+
+# IDE and Editor Metadata
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

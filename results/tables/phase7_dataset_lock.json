@@ -1,0 +1,15 @@
+{
+  "n_companies": 30,
+  "n_observations": 58,
+  "observation_date_min": "2023-01-25",
+  "observation_date_max": "2024-11-01",
+  "filing_intelligence_date_min": "2023-01-25",
+  "filing_intelligence_date_max": "2024-11-01",
+  "primary_target_coverage": 50,
+  "secondary_target_coverage": 50,
+  "complete_model_a_obs": 50,
+  "complete_model_b_obs": 46,
+  "shared_complete_cases": 46,
+  "n_walkforward_folds": 2,
+  "lock_timestamp": "2026-09-10T16:17:14.440741Z"
+}

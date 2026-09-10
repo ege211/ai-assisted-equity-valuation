@@ -1,0 +1,7 @@
+ablation_group,feature_count,mae,rmse,r2,delta_mae_vs_baseline,delta_rmse_vs_baseline,sample_size
+1_Baseline_Only,9,0.11371,0.18379,-1.0077,0.0,0.0,30
+2_Operational_Risks,11,0.10884,0.15455,-0.4198,0.00486,0.02924,30
+3_Legal_and_Regulatory,11,0.11749,0.1763,-0.8474,-0.00379,0.00749,30
+4_Guidance_and_Capital,11,0.12239,0.19433,-1.2447,-0.00868,-0.01055,30
+5_Macro_and_Intensity,14,0.13336,0.19504,-1.2612,-0.01965,-0.01126,30
+6_All_Filing_Features,20,0.14362,0.1919,-1.1889,-0.02991,-0.00812,30

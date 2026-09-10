@@ -1,0 +1,31 @@
+ticker,sector,quarterly_count,ltm_count,oldest_ltm,newest_ltm,ltm_ratio_pct
+AAPL,Information Technology,44,41,2014Q4,2024Q4,100.0
+MSFT,Information Technology,44,41,2014Q4,2024Q4,100.0
+NVDA,Information Technology,38,31,2016Q1,2024Q4,88.6
+INTC,Information Technology,44,41,2014Q4,2024Q4,100.0
+CSCO,Information Technology,44,41,2014Q4,2024Q4,100.0
+JNJ,Health Care,44,41,2014Q4,2024Q4,100.0
+PFE,Health Care,44,41,2014Q4,2024Q4,100.0
+ABT,Health Care,44,41,2014Q4,2024Q4,100.0
+MRK,Health Care,44,41,2014Q4,2024Q4,100.0
+TMO,Health Care,44,41,2014Q4,2024Q4,100.0
+WMT,Consumer Staples,40,37,2015Q4,2024Q4,100.0
+PG,Consumer Staples,44,41,2014Q4,2024Q4,100.0
+KO,Consumer Staples,44,41,2014Q4,2024Q4,100.0
+PEP,Consumer Staples,44,41,2014Q4,2024Q4,100.0
+COST,Consumer Staples,43,37,2014Q4,2024Q4,92.5
+AMZN,Consumer Discretionary,44,41,2014Q4,2024Q4,100.0
+HD,Consumer Discretionary,44,41,2014Q4,2024Q4,100.0
+NKE,Consumer Discretionary,44,41,2014Q4,2024Q4,100.0
+MCD,Consumer Discretionary,44,41,2014Q4,2024Q4,100.0
+LOW,Consumer Discretionary,44,41,2014Q4,2024Q4,100.0
+CAT,Industrials,44,41,2014Q4,2024Q4,100.0
+MMM,Industrials,44,41,2014Q4,2024Q4,100.0
+HON,Industrials,42,36,2014Q4,2024Q4,92.3
+UNP,Industrials,44,41,2014Q4,2024Q4,100.0
+LMT,Industrials,44,41,2014Q4,2024Q4,100.0
+XOM,Energy,44,41,2014Q4,2024Q4,100.0
+CVX,Energy,44,41,2014Q4,2024Q4,100.0
+COP,Energy,44,41,2014Q4,2024Q4,100.0
+SLB,Energy,44,41,2014Q4,2024Q4,100.0
+EOG,Energy,44,41,2014Q4,2024Q4,100.0

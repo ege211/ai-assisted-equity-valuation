@@ -1,0 +1,31 @@
+ticker,cik,name,sector,facts_count,shares_available,status
+AAPL,0000320193,Apple Inc.,Information Technology,503,True,LOCKED_INCLUDED
+MSFT,0000789019,Microsoft Corp.,Information Technology,562,True,LOCKED_INCLUDED
+NVDA,0001045810,NVIDIA Corp.,Information Technology,627,True,LOCKED_INCLUDED
+INTC,0000050863,Intel Corp.,Information Technology,684,True,LOCKED_INCLUDED
+CSCO,0000858877,"Cisco Systems, Inc.",Information Technology,789,True,LOCKED_INCLUDED
+JNJ,0000200406,Johnson & Johnson,Health Care,609,True,LOCKED_INCLUDED
+PFE,0000078003,Pfizer Inc.,Health Care,667,True,LOCKED_INCLUDED
+ABT,0000001800,Abbott Laboratories,Health Care,476,True,LOCKED_INCLUDED
+MRK,0000310158,"Merck & Co., Inc.",Health Care,775,True,LOCKED_INCLUDED
+TMO,0000097745,Thermo Fisher Scientific Inc.,Health Care,674,True,LOCKED_INCLUDED
+WMT,0000104169,Walmart Inc.,Consumer Staples,478,True,LOCKED_INCLUDED
+PG,0000080424,Procter & Gamble Co.,Consumer Staples,468,True,LOCKED_INCLUDED
+KO,0000021344,Coca-Cola Co.,Consumer Staples,724,True,LOCKED_INCLUDED
+PEP,0000077476,"PepsiCo, Inc.",Consumer Staples,612,True,LOCKED_INCLUDED
+COST,0000909832,Costco Wholesale Corp.,Consumer Staples,460,True,LOCKED_INCLUDED
+AMZN,0001018724,"Amazon.com, Inc.",Consumer Discretionary,545,True,LOCKED_INCLUDED
+HD,0000354950,"Home Depot, Inc.",Consumer Discretionary,461,True,LOCKED_INCLUDED
+NKE,0000320187,"Nike, Inc.",Consumer Discretionary,443,True,LOCKED_INCLUDED
+MCD,0000063908,McDonald's Corp.,Consumer Discretionary,433,True,LOCKED_INCLUDED
+LOW,0000060667,"Lowe's Companies, Inc.",Consumer Discretionary,478,True,LOCKED_INCLUDED
+CAT,0000018230,Caterpillar Inc.,Industrials,703,True,LOCKED_INCLUDED
+MMM,0000066740,3M Co.,Industrials,700,True,LOCKED_INCLUDED
+HON,0000773840,Honeywell International Inc.,Industrials,632,True,LOCKED_INCLUDED
+UNP,0000100885,Union Pacific Corp.,Industrials,449,True,LOCKED_INCLUDED
+LMT,0000936468,Lockheed Martin Corp.,Industrials,537,True,LOCKED_INCLUDED
+XOM,0000034088,Exxon Mobil Corp.,Energy,438,True,LOCKED_INCLUDED
+CVX,0000093410,Chevron Corp.,Energy,622,True,LOCKED_INCLUDED
+COP,0001163165,ConocoPhillips,Energy,743,True,LOCKED_INCLUDED
+SLB,0000087347,SLB Ltd.,Energy,548,True,LOCKED_INCLUDED
+EOG,0000821189,"EOG Resources, Inc.",Energy,510,True,LOCKED_INCLUDED

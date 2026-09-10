@@ -1,0 +1,22 @@
+======================================================================
+PHASE 7 EMPIRICAL DATASET LOCK REPORT
+======================================================================
+Lock Timestamp:                   2026-09-10T16:17:14.440741Z
+Number of Companies:              30
+Total Panel Observations:         58
+Observation Date Range:           2023-01-25 to 2024-11-01
+Filing Intelligence Date Range:   2023-01-25 to 2024-11-01
+Primary Target Coverage:          50 / 58 (86.2%)
+Secondary Target Coverage:        50 / 58 (86.2%)
+Complete Model A Observations:    50
+Complete Model B Observations:    46
+Final Shared Complete Cases:      46
+Number of Walk-Forward Folds:     2
+Universe Tickers:                 AAPL, ABT, AMZN, CAT, COP, COST, CSCO, CVX, EOG, HD, HON, INTC, JNJ, KO, LMT, LOW, MCD, MMM, MRK, MSFT, NKE, NVDA, PEP, PFE, PG, SLB, TMO, UNP, WMT, XOM
+======================================================================
+METHODOLOGICAL LOCK STATUS: ACTIVE & AUDITED
+1. Primary Target: forward_ebit_margin_change (LOCKED)
+2. Point-in-Time: acceptance_datetime authoritative (LOCKED)
+3. Filing Coverage: Genuine PIT extractions, zero backfill (LOCKED)
+4. Identical Sample: Model A and Model B evaluated on identical rows (LOCKED)
+======================================================================
