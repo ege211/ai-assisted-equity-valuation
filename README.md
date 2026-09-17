@@ -12,6 +12,25 @@ An institutional quantitative finance research platform and open-source economet
 
 ---
 
+## Student Note: Why I Built This and What the Process Taught Me
+
+### 1. The Spark: Trying to Understand How Real Funds Pick Stocks
+In today's AI era, everyone talks about automating everything. What genuinely fascinated me, though, was how real-world asset management companies and portfolio managers actually make decisions. When a fund manager sits down to build a portfolio, what specific factors do they weigh? How do they value a company when there are thousands of moving parts? Having an interest in AI development, I started wondering: could an AI valuation engine analyze all these corporate factors faster and more objectively than a human analyst, without missing the nuances of company reports? That curiosity was the foundation of this entire project.
+
+### 2. My First Battle: The Deceptive Mountain of SEC Filings
+My first major shock had nothing to do with building models—it was the sheer chaos of raw financial disclosures. When I started pulling SEC Form 10-K annual reports to build a clean database, I was completely overwhelmed by the volume of information. Over 800,000 raw financial facts across 30 major companies, each tagged with slightly different accounting labels. At first, when things didn't line up, I panicked. I assumed I had made a rookie programming error: I spent days combing through my Python scripts line by line, thinking my parser was broken. Then I looked at the AI outputs, searching for glitches. It took me weeks to realize that the code wasn't the problem—the real world of corporate reporting is simply messy, inconsistent, and fragmented. Taming that data into a reliable, structured pipeline was the hardest engineering hurdle I faced.
+
+### 3. The Strict Reality: You Cannot Cheat the Clock
+As I designed the engine, I realized another trap: in real portfolio management, you can never look ahead. If you value a company on December 31, 2022, you cannot use an annual report filed in February 2023. I had to build a strict Point-in-Time rule to ensure the system only ever saw documents that were publicly available at that exact second. Furthermore, I decided that the core valuation shouldn't be an unconstrained AI guess; it had to come from deterministic Discounted Cash Flow (DCF) fundamentals. The role of AI was strictly to parse management narratives and risk disclosures, not to make up share prices out of thin air.
+
+### 4. What the Numbers Taught Me (The Reality Check)
+When I tested whether processing corporate text could actually predict future operating profit margins better than standard accounting ratios, I got a humbling result. Under a strict chronological walk-forward test, narrative text signals provided no statistically meaningful forecasting edge over simple historical numbers ($p = 0.2335$). In fact, throwing too many text signals into the model actually degraded accuracy. The AI wasn't finding secret trading signals in management letters; it was just absorbing corporate buzzwords and legal boilerplate.
+
+### 5. My Main Takeaway: A First Step into Modern Finance
+If an admissions tutor or professor asks me what I learned from this project, my answer is simple: I see this valuation engine not as a magic black box, but as my personal first step into the intersection of modern AI, macroeconomics, and asset management. I learned how institutional portfolios are actually bounded by financial realities, why data engineering is 80% of any quantitative problem, and why disciplined accounting discipline still beats flashy tech hype. Discovering where algorithms fail under real-world constraints was the most valuable lesson of my high school career.
+
+---
+
 ## 1. Research Motivation & Core Question
 
 The rapid expansion of natural language processing (NLP) and large language models (LLMs) in asset management has generated aggressive commercial claims regarding the predictive power of corporate disclosure text. Practitioner literature frequently asserts that quantifying annual SEC Form 10-K filings yields substantial forecasting "alpha" over standard financial statement metrics.
