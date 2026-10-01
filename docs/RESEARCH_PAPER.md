@@ -1,10 +1,10 @@
 # Empirical Limits of Textual Intelligence in Structural Equity Valuation: An Out-of-Sample Walk-Forward Study on SEC 10-K Filings
 
-**Author:** Quantitative Research & Financial Engineering Team  
-**Institution:** Advanced Agentic Financial Intelligence Laboratory  
+**Author:** Ege Can  
+**Academic Level:** Independent High-School Student Research Project  
+**School:** FMV Özel Ispartakule Işık High School, Istanbul (Class of 2027)  
 **Date:** September 2026  
-**Status:** Pre-Release Academic Working Paper (Phase 9 Release Candidate)  
-**Classification:** JEL G12, G17, M41, C53, C58  
+**Research Focus:** Fundamental Equity Valuation & Empirical Limits of Machine Learning  
 
 ---
 

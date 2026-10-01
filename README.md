@@ -1,14 +1,12 @@
-# AI-Assisted Equity Valuation & Investment Intelligence Platform
+# AI-Assisted Equity Valuation & Financial Analysis Platform
+### Independent High-School Student Quantitative Research Project
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Tests: 260 Passing](https://img.shields.io/badge/tests-260%20passing-brightgreen.svg)](tests/)
-[![Status: Release Candidate v1.0.0](https://img.shields.io/badge/version-v1.0.0-success.svg)](docs/RESEARCH_PAPER.md)
+[![Academic Level](https://img.shields.io/badge/Level-High%20School%20Student%20Research-blue.svg)](#)
 
-An institutional quantitative finance research platform and open-source econometric laboratory combining SEC regulatory disclosures, automated five-tier XBRL normalization, immutable deterministic discounted cash flow (DCF) valuation, point-in-time (PIT) filing intelligence, and chronological walk-forward out-of-sample predictive evaluation.
-
-> **Research Description:**  
-> A reproducible equity research and valuation platform combining SEC financial data, deterministic valuation, point-in-time filing intelligence, evidence validation, and chronological out-of-sample research.
+> **An independent high-school student quantitative research platform combining SEC Form 10-K filings, deterministic Discounted Cash Flow (DCF) valuation, and natural language processing to empirically test whether AI text analysis can forecast corporate operating performance.**
 
 ---
 
