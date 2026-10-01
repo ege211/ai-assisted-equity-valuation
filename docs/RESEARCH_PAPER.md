@@ -10,7 +10,7 @@
 
 ## Abstract
 
-We examine whether high-dimensional textual features extracted from annual SEC Form 10-K filings provide incremental predictive power over trailing accounting fundamentals when forecasting forward corporate operating performance and informing fundamental equity valuation. Developing an end-to-end, point-in-time quantitative research platform, we implement an automated five-tier XBRL normalization engine across 30 non-financial large-cap corporations spanning six sectors (2014–2024), a fully deterministic discounted cash flow (DCF) and reverse DCF valuation engine, and a pre-specified natural language processing pipeline that quantifies twelve linguistic dimensions across Item 1 (Business), Item 1A (Risk Factors), and Item 7 (MD&A). Under an exploratory cross-sectional leave-one-out cross-validation framework ($N=30$), operational risk features appeared to provide a modest reduction in mean absolute error ($\Delta\text{MAE} = -4.3\%$, $p=0.0409$). However, when evaluated within a rigorous, point-in-time, multi-cohort walk-forward expanding window design across $N=46$ complete chronological observations (Fold 1: Train $N=26$, Test $N=20$; Fold 2: Train $N=20$, Test $N=26$), the incremental predictive gain of the pre-specified operational text model evaporates ($\text{MAE}_{\text{Baseline}} = 0.0777$, $\text{MAE}_{\text{Enhanced}} = 0.0781$, $\Delta\text{MAE} = -0.0005$, $-0.60\%$, paired $t = -1.191$, $p = 0.2335$, permutation $p = 0.2458$, 95% bootstrap CI $[-0.0011, +0.0003]$), failing to reject the null hypothesis of equal forecast accuracy. Broader textual combinations exhibit severe parameter dilation and statistical degradation (Omnibus 12-feature model: $\text{MAE} = 0.0879$, $\text{RMSE} = 0.1541$, degradation $-13.14\%$, $p = 0.0045$). Furthermore, we introduce an auditable, bounded valuation bridge (`valuation_bridge_v1.0`) mapping extracted text claims directly to fundamental DCF parameters, resulting in an average equity value adjustment of $-\$6.42$ per share ($-4.8\%$) across 23 firms exhibiting material operational headwinds, while preserving deterministic baseline valuations. Our findings establish that filing text signals largely overlap with trailing accounting fundamentals and introduce excess variance in chronological forecasting, underscoring the critical necessity of strict walk-forward temporal barriers in machine learning applications to fundamental finance.
+In this independent research project, I investigate whether analyzing text disclosures in corporate annual reports (SEC Form 10-K) actually helps predict future profit margins and improve stock valuations beyond standard accounting ratios. Building a Python evaluation framework across 30 major U.S. companies (2014–2024), I standardized raw SEC XBRL financial data, built a Discounted Cash Flow (DCF) model grounded in core accounting principles, and used Natural Language Processing (NLP) to measure management sentiment and operational risks across annual reports. While simple cross-sectional tests seemed to suggest that text signals gave an advantage ($\Delta\text{MAE} = -4.3\%$, $p=0.0409$), that predictive edge completely evaporated under realistic chronological walk-forward testing ($\text{MAE}_{\text{Baseline}} = 0.0777$ vs. $\text{MAE}_{\text{Enhanced}} = 0.0781$, $p = 0.2335$). In fact, adding too many text features caused the model to overfit on corporate buzzwords and noise (degradation $-13.14\%$, $p = 0.0045$). However, using text disclosures as qualitative risk adjustments within a disciplined DCF framework (`valuation_bridge_v1.0`) adjusted equity valuations downward by an average of $-\$6.42$ per share ($-4.8\%$) for firms facing real operational headwinds, without letting an AI make unconstrained price guesses. These findings show that corporate text is valuable as a qualitative sanity check on risk, but cannot replace disciplined fundamental accounting.
 
 **Keywords:** Fundamental Equity Valuation, SEC Form 10-K, Natural Language Processing, Ridge Regression, Walk-Forward Validation, Discounted Cash Flow, Point-in-Time Accounting, Information Content.
 
@@ -44,15 +44,15 @@ Concurrently, practitioners in algorithmic asset management and fundamental equi
 This study directly addresses this empirical question:
 > **Core Research Question:** *Do quantitative textual features extracted from SEC Form 10-K narrative disclosures provide statistically significant, out-of-sample incremental predictive power over standardized trailing accounting fundamentals when forecasting forward operating performance and informing fundamental equity valuation?*
 
-To resolve this question without methodological compromise, we construct an end-to-end, production-grade quantitative research terminal and econometric laboratory:
-1. **Multi-Company Accounting Normalization Engine:** An automated five-tier XBRL concept cascade mapping raw SEC company facts into standardized financial line items across 30 large-cap corporations and six sectors over the decade 2014–2024.
-2. **Deterministic Fundamental Valuation Engine:** An immutable, pure-Python structural discounted cash flow (DCF) and reverse DCF engine parameterizing Net Operating Profit After Tax ($NOPAT$), Return on Invested Capital ($ROIC$), Weighted Average Cost of Capital ($WACC$), Free Cash Flow to Firm ($FCFF$), and market-implied growth expectations.
-3. **Pre-Specified Filing Intelligence Pipeline:** An auditable NLP pipeline isolating Item 1 (Business), Item 1A (Risk Factors), and Item 7 (Management’s Discussion and Analysis - MD&A), extracting twelve distinct linguistic metrics encompassing operational risks, litigation, guidance sentiment, and linguistic intensity.
-4. **Point-in-Time (PIT) Temporal Architecture:** A database-backed information barrier enforcing SEC EDGAR acceptance timestamps (`acceptance_datetime <= cutoff 23:59:59`), ensuring that historical analytical states reflect strictly what was knowable at the historical juncture.
-5. **The Valuation Bridge (`valuation_bridge_v1.0`):** A deterministic, bounded mapping translating qualitative textual claims into disciplined fundamental parameter shifts, preventing unconstrained model drift.
-6. **Walk-Forward Chronological Evaluation:** A multi-cohort out-of-sample framework ($N=46$ shared complete cases across two expanding folds) that rigorously tests predictive superiority against a baseline accounting model.
+To investigate this question without shortcuts or looking ahead into the future, I designed an evaluation pipeline in Python built around six clear components:
+1. **Company Accounting Normalization:** An automated Python parser mapping raw SEC XBRL tags into standardized financial line items across 30 large-cap corporations and six sectors over 2014–2024.
+2. **Fundamental Valuation Model:** A pure-Python Discounted Cash Flow (DCF) model parameterizing Net Operating Profit After Tax ($NOPAT$), Return on Invested Capital ($ROIC$), Weighted Average Cost of Capital ($WACC$), and Free Cash Flow to Firm ($FCFF$).
+3. **Filing Text Pipeline:** An NLP pipeline isolating the Business (Item 1), Risk Factors (Item 1A), and MD&A (Item 7) sections of 10-K filings to measure management sentiment and operational risk mentions.
+4. **Strict Point-in-Time Rule:** A time barrier enforcing SEC filing timestamps, ensuring that the model only ever sees documents that were publicly available at each historical cutoff date.
+5. **The Valuation Bridge (`valuation_bridge_v1.0`):** A rule-based bridge translating qualitative textual risk flags into disciplined, bounded adjustments to valuation parameters, preventing wild guesses.
+6. **Chronological Walk-Forward Testing:** A realistic out-of-sample evaluation framework testing predictive accuracy across time against a baseline accounting model.
 
-Our primary empirical finding is striking: while exploratory cross-sectional analysis indicated suggestive predictive power for operational text signals ($\Delta\text{MAE} = -4.3\%$, $p=0.0409$), **this predictive advantage vanishes entirely under rigorous walk-forward chronological evaluation** ($\text{MAE}_{\text{Baseline}} = 0.0777$ vs. $\text{MAE}_{\text{Enhanced}} = 0.0781$, $\Delta\text{MAE} = -0.0005$, $-0.60\%$, paired $t = -1.191$, $p = 0.2335$). Broad multi-feature text models suffer severe overfitting and variance dilation ($p = 0.0045$).
+My primary finding was clear and humbling: while exploratory testing seemed to suggest that text signals helped predict margins ($\Delta\text{MAE} = -4.3\%$, $p=0.0409$), **this predictive advantage disappeared completely under realistic chronological walk-forward testing** ($\text{MAE}_{\text{Baseline}} = 0.0777$ vs. $\text{MAE}_{\text{Enhanced}} = 0.0781$, $p = 0.2335$). In fact, adding too many text features caused the model to overfit on corporate buzzwords and noise ($p = 0.0045$).
 
 ---
 
@@ -105,7 +105,7 @@ To eliminate lookahead bias, all data ingestion strictly delineates between thre
 2. **SEC Filing Date ($t_{\text{filed}}$):** The calendar day on which the report was officially received by the SEC.
 3. **SEC Acceptance Timestamp ($t_{\text{accept}}$):** The exact microsecond timestamp assigned by SEC EDGAR upon successful receipt (e.g., `2024-02-02 16:15:32 EST`).
 
-In our research terminal, an analyst operating at historical cutoff $T_{\text{cutoff}}$ is subject to the strict barrier:
+In my research framework, the analysis at any historical cutoff $T_{\text{cutoff}}$ is subject to a strict time barrier:
 
 $$\mathcal{I}(T_{\text{cutoff}}) = \left\{ d \in \mathcal{D} \mid t_{\text{accept}}(d) \le T_{\text{cutoff}} \text{ 23:59:59} \right\}$$
 
@@ -116,7 +116,7 @@ Under no circumstances can an observation whose SEC acceptance timestamp postdat
 ## 4. Multi-Company Accounting Normalization Engine
 
 ### 4.1 Automated 5-Tier XBRL Cascade
-A significant engineering barrier in automated equity analysis is the non-standardized taxonomy of SEC US-GAAP XBRL disclosures across registrants and reporting eras. To ingest company financial statements reliably without manual data manipulation, we implement a prioritized five-tier concept cascade for each primary financial statement item.
+A significant engineering barrier in automated equity analysis is the non-standardized taxonomy of SEC US-GAAP XBRL disclosures across registrants and reporting eras. To ingest company financial statements reliably without manual data manipulation, I implemented a standardized mapping for each primary financial statement item.
 
 For instance, Operating Income ($EBIT$) is resolved via the cascade:
 1. `us-gaap:OperatingIncomeLoss`
@@ -152,7 +152,7 @@ This ensures mathematical stability in $NOPAT$ and subsequent structural DCF cal
 ## 5. Deterministic Valuation Engine (DCF & Reverse DCF)
 
 ### 5.1 Three-Stage Discounted Free Cash Flow Engine
-Valuation must remain free from qualitative bias. We engineer a 100% deterministic, pure-Python structural DCF model parameterized entirely by trailing audited fundamentals and explicit user-specified or formulaic parameters.
+Valuation should remain grounded in accounting discipline. I built a pure-Python structural DCF model driven strictly by trailing audited fundamentals and standard valuation formulas (Penman, 2013).
 
 The valuation model projects cash flows over a 10-year discrete forecast horizon (comprising a 5-year explicit high-growth phase and a 5-year linear transition phase) followed by a perpetual growth terminal value:
 
@@ -223,7 +223,7 @@ Each metric is computed using curated institutional domain vocabularies, normali
 
 A fundamental challenge in AI-assisted equity research is bridging the qualitative insights generated by NLP models with the strict numerical inputs of valuation models. Unconstrained LLM parameter adjustments frequently lead to volatile, ungrounded valuations. 
 
-To overcome this, we establish `valuation_bridge_v1.0`: an auditable, rule-based quantitative translation engine with bounded parameter adjustments.
+To bridge this gap responsibly, I created `valuation_bridge_v1.0`: a rule-based translation engine that maps textual risk flags into bounded parameter adjustments, avoiding wild price swings.
 
 ```
 Qualitative Text Claims (Item 1, 1A, 7)
@@ -261,7 +261,7 @@ The primary forecasting target is the forward 1-year change in operating margin:
 
 $$Y_{i, t+1} = \Delta m_{i, t \to t+1} = m_{i, t+1} - m_{i, t}$$
 
-We compare two core model specifications estimated via Ridge Regression (L2-penalized ordinary least squares):
+I compared two core model specifications estimated via Ridge Regression (L2-regularized linear regression):
 
 $$\hat{\beta} = \arg\min_{\beta} \sum_{i} \left(Y_i - X_i \beta\right)^2 + \alpha \|\beta\|_2^2$$
 
@@ -289,11 +289,11 @@ Fold 2:
 ```
 
 ### 8.3 Statistical Hypothesis Testing Framework
-We evaluate forecast accuracy using Mean Absolute Error ($\text{MAE}$) and Root Mean Squared Error ($\text{RMSE}$). 
+I evaluated forecast accuracy using Mean Absolute Error ($\text{MAE}$) and Root Mean Squared Error ($\text{RMSE}$). 
 
-Because forecast errors generated by competing models on identical corporate cohorts are cross-sectionally paired, classical independent-sample tests are invalid. Furthermore, while the Diebold-Mariano (1995) test is frequently cited in time-series literature, it is econometrically invalid in short-horizon panels with pooled cross-sections due to cross-sectional correlation and small-sample bias. We formally reject its application.
+Because forecast errors generated by competing models on identical corporate cohorts are cross-sectionally paired, classical independent-sample tests are invalid. Furthermore, while the Diebold-Mariano (1995) test is frequently cited in time-series literature, it is econometrically invalid in short-horizon panels with pooled cross-sections due to cross-sectional correlation and small-sample bias. I rejected its application in this panel setting.
 
-Instead, we employ a trio of rigorous statistical tests:
+Instead, I employed three standard statistical tests:
 1. **Paired $t$-Test on Absolute Error Losses:**
 
    $$e_{A, i} = |Y_i - \hat{Y}_{A, i}|, \quad e_{B, i} = |Y_i - \hat{Y}_{B, i}|, \quad d_i = e_{A, i} - e_{B, i}$$
@@ -341,7 +341,7 @@ Table 1 reports the primary out-of-sample forecasting performance across the wal
 
 ## 10. Empirical Results: Model Ablations & Feature Importance
 
-To understand why textual features fail to improve predictions, we evaluate five distinct feature groupings against the baseline fundamental model.
+To understand why textual features failed to improve predictions, I evaluated five distinct feature groupings against the baseline fundamental model.
 
 ### Table 2: Model Ablation Architecture and Out-of-Sample Performance
 *Evaluated on Fold 1 Walk-Forward Cohort ($N=20$)*
@@ -363,14 +363,14 @@ To understand why textual features fail to improve predictions, we evaluate five
 ### 10.1 Key Ablation Insights
 * **The "Curse of Dimensionality" in Text:** Incorporating all 12 extracted text signals (Group F) results in severe out-of-sample degradation. MAE deteriorates by $-13.14\%$ ($p = 0.0045$) and RMSE deteriorates to $0.1541$. 
 * **Management Sentiment Induces Severe Bias:** The Management Group (guidance direction, outlook optimism, capital allocation changes) exhibits the sharpest standalone degradation among clusters: MAE worsens by $-7.62\%$ ($p = 0.0080$). This indicates that managerial narrative tone often reflects strategic posturing or lagging sentiment rather than genuine predictive signal.
-* **Filing-Only Feature Ablation:** To determine whether text features contain standalone predictive information, we estimated an ablation model containing *only* Margin Pressure and Supply Chain scores (omitting all 10 accounting ratios). This yielded an MAE of $0.0771$ ($\Delta\text{MAE} = +0.0006$, $+0.81\%$, $p = 0.8714$). While statistically indistinguishable from baseline fundamentals, it demonstrates that filing text achieves near-parity with, but zero incremental value over, trailing accounting ratios.
+* **Filing-Only Feature Ablation:** To determine whether text features contain standalone predictive information, I estimated a comparison model containing *only* Margin Pressure and Supply Chain scores (omitting all 10 accounting ratios). This yielded an MAE of $0.0771$ ($\Delta\text{MAE} = +0.0006$, $+0.81\%$, $p = 0.8714$). While statistically indistinguishable from baseline fundamentals, it demonstrates that filing text achieves near-parity with, but zero incremental value over, trailing accounting ratios.
 
 ---
 
 ## 11. Empirical Results: Secondary Targets & Directional Classification
 
 ### 11.1 Secondary Target: Forward Revenue Growth ($\Delta Rev_{t \to t+1}$)
-We repeated the walk-forward evaluation substituting Forward 1-Year Revenue Growth as the forecast objective:
+I repeated the walk-forward evaluation substituting Forward 1-Year Revenue Growth as the forecast target:
 * **Model A (Baseline):** $\text{MAE} = 0.2332$, $\text{RMSE} = 0.7251$
 * **Model B (Operational):** $\text{MAE} = 0.2331$, $\text{RMSE} = 0.7247$
 * **Delta MAE:** $+0.00016$ ($+0.07\%$ improvement, $t = 0.077$, $p = 0.9386$, bootstrap CI $[-0.0039, +0.0042]$).
@@ -378,7 +378,7 @@ We repeated the walk-forward evaluation substituting Forward 1-Year Revenue Grow
 Just as with operating margin change, text signals provide zero statistically meaningful forecast enhancement for corporate top-line growth.
 
 ### 11.2 Directional Classification: Binary Earnings Deterioration
-In addition to continuous regression, we tested whether filing text aids in detecting binary tail events—specifically, **Earnings Deterioration** (defined as a year-over-year decline in operating profit exceeding 10%). Models were estimated via Logistic Regression:
+In addition to continuous regression, I tested whether filing text aids in detecting binary tail events—specifically, **Earnings Deterioration** (defined as a year-over-year decline in operating profit exceeding 10%). Models were estimated via Logistic Regression:
 
 ```
 +-----------------------------------------------------------------------------+
@@ -395,7 +395,7 @@ While the enhanced model achieves a lower Brier calibration score ($0.3851$ vs. 
 
 ## 12. Valuation Impact Analysis: The Valuation Bridge in Practice
 
-While text signals do not enhance statistical point forecasts in linear models, qualitative disclosures contain material risk warnings that directly impact intrinsic valuation scenarios. We evaluate the empirical behavior of `valuation_bridge_v1.0` across the 30-company universe.
+While text signals do not enhance statistical point forecasts in linear models, qualitative disclosures contain material risk warnings that directly impact intrinsic valuation scenarios. I evaluated how `valuation_bridge_v1.0` behaves across the 30-company universe.
 
 ```
 +-----------------------------------------------------------------------------+
@@ -422,7 +422,7 @@ This demonstrates that qualitative disclosures can be systematically incorporate
 
 ## 13. Discussion: Why Text Signals Do Not Improve Multi-Year Forecasts
 
-Our empirical finding—that 10-K textual signals fail to improve forward operating margin forecasts—contradicts popular claims in practitioner literature. We identify four structural explanations:
+My empirical finding—that 10-K textual signals fail to improve forward operating margin forecasts—challenges popular claims in financial media. I identified four main reasons for this:
 
 ### 13.1 Accounting Collinearity & Information Redundancy
 By the time an annual 10-K filing is compiled and submitted to the SEC, underlying operational headwinds (e.g., supply chain bottlenecks, rising wage costs, component shortages) have already impacted trailing quarterly financial statements. Standardized fundamental ratios—such as asset turnover, gross margin contraction, and operating working capital buildup—already capture the quantitative footprint of these events. Regression models find that text signals share high multicollinearity with trailing ratios, offering negligible orthogonal variance.
@@ -435,13 +435,13 @@ Corporate language evolves non-stationarily. Terms that signaled acute distress 
 
 ---
 
-## 14. Methodological Contributions & Engineering Artifacts
+## 14. Methodological Takeaways & Engineering Design
 
-This research provides three primary contributions to quantitative finance and computational accounting:
+This project yields three primary takeaways from a high school student research perspective:
 
-1. **The Walk-Forward Temporal Benchmark:** We demonstrate empirically that cross-sectional cross-validation (e.g., LOOCV or standard $K$-fold) yields severely inflated estimates of NLP predictive efficacy. We provide an open-source, reproducible framework establishing walk-forward chronologically barred splits as the required standard for financial text research.
-2. **Deterministic-Qualitative Decoupling Architecture:** We prove that quantitative equity research terminals do not require opaque, end-to-end "black box" neural network architectures. By decoupling 100% deterministic valuation mechanics from bounded qualitative bridge layers, institutions can maintain complete fiduciary auditability while systematically incorporating textual intelligence.
-3. **Automated Multi-Tier XBRL Normalization:** We release a comprehensive, five-tier concept cascade mapping complex SEC company fact taxonomies across multiple reporting eras into unified, economically meaningful financial statements.
+1. **The Walk-Forward Temporal Benchmark:** I demonstrated empirically that standard cross-validation yields inflated estimates of NLP predictive accuracy by leaking future trends. Evaluating models across chronological, walk-forward splits is essential to measure real predictive power.
+2. **Grounding Valuation in Accounting Discipline:** I showed that equity valuation engines do not need complex, unconstrained black-box models. By separating transparent, deterministic DCF valuation mechanics from bounded qualitative risk adjustments, researchers can maintain complete interpretability while systematically incorporating textual context.
+3. **Standardized SEC XBRL Processing:** I developed an automated Python pipeline that parses messy SEC company filings across multiple reporting years into unified, economically meaningful financial line items.
 
 ---
 
@@ -449,17 +449,17 @@ This research provides three primary contributions to quantitative finance and c
 
 * **Sample Breadth:** The empirical dataset is restricted to 30 large-cap U.S. non-financial equities. While these entities represent a substantial fraction of total U.S. market capitalization and economic output, small-cap and micro-cap equities—where analyst coverage is sparse and disclosures may be less thoroughly scrutinized—might exhibit higher textual information asymmetry.
 * **Sample Period:** The out-of-sample panel spans fiscal years 2023–2024, a macroeconomic environment characterized by aggressive Federal Reserve interest rate hikes and rapid post-pandemic normalization. Evaluating performance across a multi-decade panel encompassing a complete credit cycle remains an objective for future research.
-* **Lexical vs. Dense Semantic Embeddings:** Our pre-specified NLP pipeline intentionally utilized domain lexicons and section-normalized frequencies to preserve full auditability and avoid lookahead bias in pre-trained transformer representations. Advanced transformer models (e.g., domain-adapted FinBERT or modern LLM embeddings) fine-tuned strictly on point-in-time corpora might capture subtle syntactic nuances missed by bag-of-words approaches.
+* **Lexical vs. Dense Semantic Embeddings:** My NLP pipeline intentionally utilized domain-specific financial lexicons and section-normalized frequencies to preserve full auditability and avoid lookahead bias in pre-trained transformer representations. Advanced transformer models (e.g., domain-adapted FinBERT or modern LLM embeddings) fine-tuned strictly on point-in-time corpora might capture subtle syntactic nuances missed by bag-of-words approaches.
 
 ---
 
-## 16. Practical Implications for Institutional Equity Research
+## 16. Practical Takeaways from a Student's Perspective
 
-For chief investment officers, quantitative portfolio managers, and fundamental equity research heads, this paper offers three critical operational recommendations:
+Building and testing this project taught me three valuable lessons about quantitative finance and data science:
 
-1. **Audit Vendor Claims of "Textual Alpha":** Investment committees should exercise extreme skepticism toward commercial vendors claiming double-digit forecast improvements or market-beating returns derived from filing text. When audited under strict walk-forward temporal barriers, such gains frequently vanish.
-2. **Prioritize Structural Valuation Discipline:** Narrative intelligence is most valuable when used to stress-test explicit cash flow drivers (e.g., identifying qualitative litigation liabilities or capacity constraints) rather than serving as raw inputs to unconstrained statistical regression models.
-3. **Institutionalize Data Lineage:** Every analytical metric presented to a portfolio manager or investment committee must have an auditable lineage tracing from raw regulatory filings through deterministic transformation to final valuation impact.
+1. **Be Skeptical of AI Hype in Finance:** Many online resources and vendor pitches claim that feeding corporate reports into machine learning models easily beats market forecasts. In my experiments, once you remove chronological cheating, those claims simply disappear.
+2. **Accounting Fundamentals Still Matter Most:** Traditional balance-sheet and income-statement metrics provided virtually all the predictive value. Corporate text provided interesting qualitative context, but it didn't improve margin forecasts.
+3. **Data Engineering is Most of the Work:** The hardest and most time-consuming part of this project was parsing messy SEC XBRL filings and enforcing strict time cutoffs. Even the best models are useless if the underlying data pipeline leaks future numbers.
 
 ---
 
@@ -474,9 +474,11 @@ Future academic inquiry should expand upon this platform in several key directio
 
 ## 18. Conclusion
 
-In this paper, we conducted a rigorous, out-of-sample empirical investigation into whether textual intelligence extracted from SEC Form 10-K filings enhances fundamental corporate forecasts and equity valuation. Utilizing an immutable deterministic valuation engine, an automated five-tier XBRL normalization cascade, and a point-in-time walk-forward econometric architecture across 30 large-cap corporations, we tested pre-specified narrative signals against standardized accounting fundamentals.
+In this project, I investigated whether extracting text signals from SEC Form 10-K filings could genuinely improve forecasts of corporate operating margins and inform fundamental stock valuations. Across 30 major U.S. companies over a ten-year span (2014–2024), I compared classic accounting ratios against models augmented with NLP text metrics from annual reports.
 
-Our results demonstrate that while exploratory cross-sectional analysis suggested modest predictive gains, out-of-sample walk-forward evaluation definitively fails to reject the null hypothesis of equal forecast accuracy ($\Delta\text{MAE} = -0.60\%$, $p = 0.2335$). Broad combinations of textual metrics lead to severe parameter dilation and forecast deterioration. However, we show that qualitative disclosures can be translated into disciplined, bounded valuation scenarios via an auditable valuation bridge, preserving analytical rigor without sacrificing mathematical determinism. We conclude that in fundamental equity research, textual narrative serves as a vital qualitative risk audit rather than an automated replacement for structural accounting analysis.
+My results showed that while text signals looked promising in simple cross-sectional tests, their advantage completely disappeared under realistic chronological testing ($p = 0.2335$). In fact, adding too many text features caused the model to overfit on corporate boilerplate. However, text disclosures proved useful as qualitative risk flags within a disciplined Discounted Cash Flow valuation.
+
+Ultimately, this research demonstrated that in financial analysis, disciplined accounting fundamentals remain the true foundation, and qualitative reading serves as a vital check on risk rather than a shortcut to predicting the future.
 
 ---
 
