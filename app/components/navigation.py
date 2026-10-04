@@ -12,13 +12,15 @@ Renders the multi-tab navigation bar for the platform's core views:
 6. What Changed
 """
 
+import sys
 from typing import Any, List
 from app.state import get_state, set_state
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
+
 
 NAV_PAGES: List[str] = [
     "Overview",
@@ -40,7 +42,7 @@ def render_navigation(st_client: Any = None) -> str:
     Returns:
         The active page name string.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     current_page = get_state("active_page", "Overview", ctx)
 
     default_idx = 0

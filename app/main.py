@@ -54,10 +54,9 @@ from app.pages import (
     render_changes_page,
 )
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 def get_default_service() -> PlatformService:
@@ -65,19 +64,33 @@ def get_default_service() -> PlatformService:
     return PlatformService()
 
 
-def run_app(service: Optional[PlatformService] = None, st_client: Any = None) -> Optional[AnalysisResponse]:
+def run_app(
+    service: Optional[PlatformService] = None,
+    st_client: Any = None,
+    initial_page: Optional[str] = None,
+) -> Optional[AnalysisResponse]:
     """
     Execute the application lifecycle.
 
     Args:
         service: Optional PlatformService instance (defaults to production instance).
         st_client: Optional Streamlit module or mock.
+        initial_page: Optional initial navigation page name to activate.
 
     Returns:
         The resulting AnalysisResponse DTO, or None if an error occurred.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     svc = service or get_default_service()
+
+    # 0. Runtime Configuration Safeguards
+    st_mod = _get_st()
+    if st_mod is not None and hasattr(st_mod, "config"):
+        try:
+            st_mod.config.set_option("browser.gatherUsageStats", False)
+            st_mod.config.set_option("client.showSidebarNavigation", False)
+        except Exception:
+            pass
 
     # 1. Page Configuration (if Streamlit is available)
     if ctx is not None and hasattr(ctx, "set_page_config"):
@@ -93,6 +106,8 @@ def run_app(service: Optional[PlatformService] = None, st_client: Any = None) ->
 
     # 2. State Initialization
     init_session_state(ctx)
+    if initial_page:
+        set_state("active_page", initial_page, ctx)
 
     # 3. Sidebar Controls
     request, run_triggered = render_company_selector(svc, ctx)
@@ -123,12 +138,18 @@ def run_app(service: Optional[PlatformService] = None, st_client: Any = None) ->
 
         if should_execute:
             try:
-                response = svc.analyze_company(request)
+                if ctx is not None and hasattr(ctx, "spinner"):
+                    with ctx.spinner(f"Computing deterministic valuation analysis for {request.ticker} ({request.mode})..."):
+                        response = svc.analyze_company(request)
+                else:
+                    response = svc.analyze_company(request)
                 set_state("analysis_response", response, ctx)
                 set_state("service_error", None, ctx)
                 set_state("_last_ticker", request.ticker, ctx)
                 set_state("_last_mode", request.mode, ctx)
                 set_state("_last_date", request.as_of_date, ctx)
+                if run_triggered and ctx is not None and hasattr(ctx, "sidebar") and hasattr(ctx.sidebar, "success"):
+                    ctx.sidebar.success(f"Analysis updated for {request.ticker}.")
             except MissingPITDateError as e:
                 service_error_msg = f"Point-in-Time Error: {str(e)}"
                 reset_analysis_state(ctx)
@@ -204,12 +225,13 @@ def run_app(service: Optional[PlatformService] = None, st_client: Any = None) ->
 
 def main():
     """Main script entry point."""
-    if st is None:
+    st = _get_st()
+    if st is None or not (hasattr(st, "runtime") and hasattr(st.runtime, "exists") and st.runtime.exists()):
+        # Running via direct python app/main.py
         print("=" * 70)
         print("AI-Assisted Equity Valuation & Investment Intelligence Platform")
         print("=" * 70)
-        print("Streamlit is not installed in the current environment.")
-        print("To launch the interactive dashboard, install Streamlit and run:")
+        print("To launch the interactive dashboard, run:")
         print("    streamlit run app/main.py")
         print("\nVerifying PlatformService integration:")
         svc = get_default_service()

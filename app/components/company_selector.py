@@ -12,12 +12,13 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 from src.service.contracts import CompanyProfile, CompanyRequest
 from src.service.platform_service import PlatformService
+import sys
 from app.state import get_state, set_state
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 def validate_historical_date(date_str: Optional[str]) -> Tuple[bool, Optional[str]]:
@@ -63,7 +64,7 @@ def render_company_selector(
     Returns:
         Tuple of (Optional[CompanyRequest], run_triggered: bool).
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     universe = get_universe_list(service)
     ticker_options = [f"{c.ticker} — {c.company_name}" for c in universe]
     ticker_map = {f"{c.ticker} — {c.company_name}": c.ticker for c in universe}

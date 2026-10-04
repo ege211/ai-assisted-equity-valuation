@@ -1,7 +1,7 @@
-# Reproducibility Guide: AI-Assisted Equity Valuation & Investment Intelligence Platform
+# Reproducibility Guide: AI-Assisted Equity Valuation & Financial Analysis Platform
 
 **Document Version:** 1.0.0  
-**Phase:** Phase 9 (Academic Documentation & Reproducibility Package)  
+**Author:** Ege Can (Independent High School Student Research)  
 **Authoritative Lock:** `results/tables/phase7_dataset_lock.json`  
 **Target Platform:** macOS / Linux (POSIX compliant)  
 **Python Compatibility:** Python 3.9, 3.10, 3.11  
@@ -40,7 +40,7 @@ Follow these steps from a terminal prompt in the project root directory:
 
 ```bash
 # 1. Clone or navigate to the project repository
-cd "project 2"
+cd ai-assisted-equity-valuation
 
 # 2. Verify Python installation
 python3 --version
@@ -106,13 +106,13 @@ python -m unittest tests.test_reverse_dcf -v
 # Verify SEC XBRL Normalization & Fallbacks
 python -m unittest tests.test_normalization -v
 
-# Verify Point-in-Time Temporal Boundaries (Phase 8E)
+# Verify Point-in-Time Temporal Boundaries
 python -m unittest tests.test_point_in_time -v
 
-# Verify Provenance & Data Lineage (Phase 8F)
+# Verify Provenance & Data Lineage
 python -m unittest tests.test_provenance -v
 
-# Verify Streamlit Research Terminal Components (Phase 8G)
+# Verify Streamlit Research Terminal Components
 python -m unittest tests.test_ui_views -v
 ```
 
@@ -193,7 +193,7 @@ The interactive visual interface is built with Streamlit and organized into six 
 
 ### 6.1 Launch Command
 ```bash
-streamlit run src/app/Home.py
+streamlit run app/main.py
 ```
 Upon execution, Streamlit will start a local web server (typically at `http://localhost:8501`).
 
@@ -250,11 +250,11 @@ The authoritative state of the empirical findings is locked in `results/tables/p
 ```bash
 # Verify checksum of dataset lock file (macOS)
 shasum -a 256 results/tables/phase7_dataset_lock.json
-# Expected: e2f39841c6d328b9a918db40e7041fa3c9b7404a39031ef18f75c2e3995874de
+# Expected: 7befa1b3934a85e89796880f45d8bcdc544222c4a400a8853af2914e3e885d62
 
 # Verify checksum of model results table (macOS)
 shasum -a 256 results/tables/phase7_panel_model_results.csv
-# Expected: 7b84a9e52e4003d52c1e6fae1f74ec6a53f096738b50e271a3962b3a0f7dfb91
+# Expected: 6ec96fb68e559673a3c3f1fe96ebc74aaf954fc428942e79ef1954b0905ec48d
 ```
 
 ---
@@ -268,7 +268,7 @@ shasum -a 256 results/tables/phase7_panel_model_results.csv
 ### Q2: Streamlit displays `Port 8501 is already in use`.
 * **Resolution:** Specify an alternative port:
   ```bash
-  streamlit run src/app/Home.py --server.port 8502
+  streamlit run app/main.py --server.port 8502
   ```
 
 ### Q3: Python reports `ModuleNotFoundError: No module named 'src'`.

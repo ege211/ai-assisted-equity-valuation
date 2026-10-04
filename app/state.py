@@ -8,13 +8,15 @@ Designed to work with Streamlit's native st.session_state when running inside St
 while providing a graceful in-memory fallback for headless execution and unit testing.
 """
 
+import sys
 from typing import Any, Dict, Optional
 from src.service.contracts import AnalysisResponse, CompanyRequest
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
+
 
 # In-memory fallback dictionary for testing outside Streamlit runner
 _FALLBACK_STATE: Dict[str, Any] = {}
@@ -33,13 +35,19 @@ DEFAULTS: Dict[str, Any] = {
 
 def _get_backend(st_client=None) -> Any:
     """Return the active state backend (st.session_state or in-memory fallback)."""
-    client = st_client or st
-    if client is not None and hasattr(client, "session_state"):
-        # If client or session_state is a Mock, use _FALLBACK_STATE for deterministic dict behavior
-        cls_name = getattr(client.session_state, "__class__", type(None)).__name__
-        if "Mock" in cls_name:
-            return _FALLBACK_STATE
-        return client.session_state
+    st_mod = _get_st()
+    is_active_st = (
+        st_mod is not None
+        and hasattr(st_mod, "runtime")
+        and hasattr(st_mod.runtime, "exists")
+        and st_mod.runtime.exists()
+    )
+    if is_active_st:
+        client = st_client or st_mod
+        if hasattr(client, "session_state"):
+            cls_name = getattr(client.session_state, "__class__", type(None)).__name__
+            if "Mock" not in cls_name:
+                return client.session_state
     return _FALLBACK_STATE
 
 

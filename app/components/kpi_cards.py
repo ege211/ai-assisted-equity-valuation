@@ -8,13 +8,14 @@ Explicitly distinguishes Source Data, Analyst Assumption, and Model Output.
 Enforces the core requirement: If a value is unavailable, renders 'N/A' (never synthetic data).
 """
 
+import sys
 from typing import Any, Dict, Optional
 from src.service.contracts import AnalysisResponse
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 def format_currency(val: Optional[float], decimals: int = 2) -> str:
@@ -61,7 +62,7 @@ def render_kpi_cards(
     Returns:
         Dictionary of formatted KPI strings.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
 
     # Default all KPIs to "N/A"
     kpis = {

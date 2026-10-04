@@ -26,10 +26,12 @@ from src.service.platform_service import PlatformService
 from app.components.temporal_context import render_temporal_context
 from app.components.provenance import render_source_provenance_badge
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+import sys
+
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 KEY_ITEM_SECTIONS: Set[str] = {
@@ -90,7 +92,7 @@ def render_filings_page(
     Returns:
         Structured data dictionary for testing/headless execution.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     filings_data: Dict[str, Any] = {
         "ticker": None,
         "company_name": "",
@@ -382,3 +384,10 @@ def render_filings_page(
     return filings_data
 
 
+if __name__ == "__main__":
+    from pathlib import Path
+    _ROOT = Path(__file__).resolve().parent.parent.parent
+    if str(_ROOT) not in sys.path:
+        sys.path.insert(0, str(_ROOT))
+    from app.main import run_app
+    run_app(initial_page="Filing Intelligence")

@@ -10,12 +10,13 @@ Standardized, reusable UI component displaying temporal research context:
 4. Clean presentation-only formatting across all analytical views.
 """
 
+import sys
 from typing import Any, Dict, Optional
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 def format_temporal_label(mode: str = "LIVE", as_of_date: Optional[str] = None) -> str:
@@ -49,7 +50,7 @@ def render_temporal_context(
     Returns:
         Dictionary summarizing the active temporal parameters.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     clean_mode = str(mode).strip().upper() if mode else "LIVE"
     is_hist = clean_mode == "HISTORICAL"
     date_str = str(as_of_date).strip() if (as_of_date and is_hist) else None

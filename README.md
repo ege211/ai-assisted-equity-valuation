@@ -139,7 +139,7 @@ The primary empirical investigation evaluated out-of-sample forward operating ma
 The visual presentation layer is built with Streamlit and organized into six institutional analytical modules:
 
 ```bash
-streamlit run src/app/Home.py
+streamlit run app/main.py
 ```
 
 * **1. Executive Overview:** Global valuation summary, PIT coverage status banner, fundamental snapshot, and frozen Phase 7 academic disclosures.
@@ -156,7 +156,7 @@ streamlit run src/app/Home.py
 ### 7.1 Environment Setup
 ```bash
 # Clone repository
-git clone https://github.com/institution/ai-assisted-equity-valuation.git
+git clone https://github.com/ege211/ai-assisted-equity-valuation.git
 cd ai-assisted-equity-valuation
 
 # Create virtual environment
@@ -176,7 +176,7 @@ python -m unittest discover tests -v
 
 ### 7.3 Launch Research Terminal
 ```bash
-streamlit run src/app/Home.py
+streamlit run app/main.py
 ```
 
 ---
@@ -199,8 +199,7 @@ streamlit run src/app/Home.py
 │   ├── RESEARCH_PAPER.md                  # 18-Section Academic Working Paper + Appendices A-F
 │   ├── REPRODUCIBILITY_GUIDE.md           # Step-by-step CLI replication instructions
 │   ├── EXPERIMENT_REGISTRY.md             # Immutable registry of all 7 empirical experiments
-│   ├── DATA_PROVENANCE.md                 # Data lineage, schemas, and PIT rules
-│   └── PHASE_*_REPORT.md                  # Detailed phase implementation reports (Phases 0-10)
+│   └── DATA_PROVENANCE.md                 # Data lineage, schemas, and PIT rules
 ├── results/                               # Authoritative tabular empirical outputs
 │   └── tables/                            # Locked CSV and JSON experiment tables
 ├── src/                                   # Core Analytical Engines
@@ -234,3 +233,10 @@ The complete academic package is available in the `docs/` directory:
 > 3. **Model-Dependent Fair Value:** All intrinsic valuation calculations (e.g., DCF target prices) are mathematical outputs strictly dependent on user-selected or formulaic inputs (WACC, terminal growth, reinvestment assumptions). They do not represent objective market values.
 > 4. **No Promotional Claims:** This project rejects all claims of "AI stock picking," "algorithmic market beating," or "automated textual alpha."
 > 5. **Empirical Limitations:** The empirical findings are based on a 30-firm large-cap universe over two walk-forward folds ($N=46$ shared complete cases). Results are subject to survivorship bias and small-sample constraints.
+
+---
+
+## 11. Research Methodology & Transparency Note
+
+As an independent 12th-grade student researcher, I formulated the core research question, created the 30-firm SEC XBRL data pipeline, implemented the deterministic DCF valuation models, and executed the walk-forward econometric tests. I utilized AI coding assistants for algorithmic troubleshooting, data structuring, and editorial proofreading. All financial hypotheses, quantitative evaluations, interpretations, and conclusions are strictly my own.
+

@@ -7,13 +7,14 @@ Renders the top institutional research terminal banner, company profile badge,
 and explicit analytical taxonomy tags (Source Data, Analyst Assumption, Model Output).
 """
 
+import sys
 from typing import Any, Dict, List, Optional
 from src.service.contracts import CompanyProfile
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 def render_header(
@@ -38,7 +39,7 @@ def render_header(
     Returns:
         Structured dictionary summarizing rendered header elements.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     warnings = warnings or []
 
     # Format header metadata

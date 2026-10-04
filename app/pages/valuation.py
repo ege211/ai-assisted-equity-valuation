@@ -29,10 +29,12 @@ from app.components.provenance import (
     render_source_provenance_badge,
 )
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+import sys
+
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 def _build_markdown_table(headers: List[str], rows: List[List[str]]) -> str:
@@ -54,7 +56,7 @@ def render_sensitivity_matrix(
     
     Returns structured rows for testing/headless execution.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     rows = []
 
     wacc_vals = grid.parameter_1_values
@@ -114,7 +116,7 @@ def render_valuation_page(
     Returns:
         Structured dictionary summarizing valuation outputs for verification.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
 
     val_data: Dict[str, Any] = {}
 
@@ -463,3 +465,12 @@ def render_valuation_page(
         ctx.caption(f"Lineage Provenance: `{val_data.get('lineage', 'N/A')}`")
 
     return val_data
+
+
+if __name__ == "__main__":
+    from pathlib import Path
+    _ROOT = Path(__file__).resolve().parent.parent.parent
+    if str(_ROOT) not in sys.path:
+        sys.path.insert(0, str(_ROOT))
+    from app.main import run_app
+    run_app(initial_page="Valuation")

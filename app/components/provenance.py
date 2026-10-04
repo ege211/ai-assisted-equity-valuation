@@ -19,10 +19,12 @@ from src.service.provenance import (
     WhatChangedResponse,
 )
 
-try:
-    import streamlit as st
-except ImportError:
-    st = None
+import sys
+
+
+def _get_st():
+    """Return the streamlit module if already loaded into sys.modules."""
+    return sys.modules.get("streamlit")
 
 
 def _format_curr(val: Optional[float]) -> str:
@@ -52,7 +54,7 @@ def render_source_provenance_badge(
     """
     Render a standardized SEC source provenance badge or fallback notice.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     if prov is None:
         if ctx is not None:
             ctx.caption("Source provenance unavailable")
@@ -94,7 +96,7 @@ def render_lineage_pipeline(
     """
     Render a multi-stage step-by-step transformation pipeline.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     if lineage is None:
         if ctx is not None:
             ctx.info("Data lineage information unavailable.")
@@ -141,7 +143,7 @@ def render_why_this_number_expander(
     """
     Render an institutional 'Why this Number?' lineage expander.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     result_data: Dict[str, Any] = {
         "title": title,
         "has_lineage": lineage is not None,
@@ -171,7 +173,7 @@ def render_what_changed_table(
     """
     Render structured multi-period changes across fundamental financials and qualitative disclosures.
     """
-    ctx = st_client or st
+    ctx = st_client or _get_st()
     if changes is None:
         if ctx is not None:
             ctx.info("Multi-period change analysis unavailable.")
