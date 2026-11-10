@@ -1,7 +1,7 @@
 # Reproducibility Guide: AI-Assisted Equity Valuation & Financial Analysis Platform
 
 **Document Version:** 1.0.0  
-**Author:** Ege Can (Independent High School Student Research)  
+**Author:** Ege Umut Can (Independent High School Student Research)  
 **Authoritative Lock:** `results/tables/phase7_dataset_lock.json`  
 **Target Platform:** macOS / Linux (POSIX compliant)  
 **Python Compatibility:** Python 3.9, 3.10, 3.11  

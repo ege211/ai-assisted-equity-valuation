@@ -16,7 +16,7 @@
 In today's AI era, everyone talks about automating everything. What genuinely fascinated me, though, was how real-world asset management companies and portfolio managers actually make decisions. When a fund manager sits down to build a portfolio, what specific factors do they weigh? How do they value a company when there are thousands of moving parts? Having an interest in AI development, I started wondering: could an AI valuation engine analyze all these corporate factors faster and more objectively than a human analyst, without missing the nuances of company reports? That curiosity was the foundation of this entire project.
 
 ### 2. My First Battle: The Deceptive Mountain of SEC Filings
-My first major shock had nothing to do with building models—it was the sheer chaos of raw financial disclosures. When I started pulling SEC Form 10-K annual reports to build a clean database, I was completely overwhelmed by the volume of information. Over 800,000 raw financial facts across 30 major companies, each tagged with slightly different accounting labels. At first, when things didn't line up, I panicked. I assumed I had made a rookie programming error: I spent days combing through my Python scripts line by line, thinking my parser was broken. Then I looked at the AI outputs, searching for glitches. It took me weeks to realize that the code wasn't the problem—the real world of corporate reporting is simply messy, inconsistent, and fragmented. Taming that data into a reliable, structured pipeline was the hardest engineering hurdle I faced.
+My first major shock had nothing to do with building models. It was the sheer chaos of raw financial disclosures. When I started pulling SEC Form 10-K annual reports to build a clean database, I was completely overwhelmed by the volume of information. Over 800,000 raw financial facts across 30 major companies, each tagged with slightly different accounting labels. At first, when things didn't line up, I panicked. I assumed I had made a rookie programming error: I spent days combing through my Python scripts line by line, thinking my parser was broken. Then I looked at the AI outputs, searching for glitches. It took me weeks to realize that the code wasn't the problem—the real world of corporate reporting is simply messy, inconsistent, and fragmented. Taming that data into a reliable, structured pipeline was the hardest engineering hurdle I faced.
 
 ### 3. The Strict Reality: You Cannot Cheat the Clock
 As I designed the engine, I realized another trap: in real portfolio management, you can never look ahead. If you value a company on December 31, 2022, you cannot use an annual report filed in February 2023. I had to build a strict Point-in-Time rule to ensure the system only ever saw documents that were publicly available at that exact second. Furthermore, I decided that the core valuation shouldn't be an unconstrained AI guess; it had to come from deterministic Discounted Cash Flow (DCF) fundamentals. The role of AI was strictly to parse management narratives and risk disclosures, not to make up share prices out of thin air.
@@ -25,7 +25,7 @@ As I designed the engine, I realized another trap: in real portfolio management,
 When I tested whether processing corporate text could actually predict future operating profit margins better than standard accounting ratios, I got a humbling result. Under a strict chronological walk-forward test, narrative text signals provided no statistically meaningful forecasting edge over simple historical numbers ($p = 0.2335$). In fact, throwing too many text signals into the model actually degraded accuracy. The AI wasn't finding secret trading signals in management letters; it was just absorbing corporate buzzwords and legal boilerplate.
 
 ### 5. My Main Takeaway: A First Step into Modern Finance
-If an admissions tutor or professor asks me what I learned from this project, my answer is simple: I see this valuation engine not as a magic black box, but as my personal first step into the intersection of modern AI, macroeconomics, and asset management. I learned how institutional portfolios are actually bounded by financial realities, why data engineering is 80% of any quantitative problem, and why disciplined accounting discipline still beats flashy tech hype. Discovering where algorithms fail under real-world constraints was the most valuable lesson of my high school career.
+If an admissions tutor or professor asks me what I learned from this project, my answer is simple: I see this valuation engine not as a magic black box, but as my personal first step into the intersection of modern AI, macroeconomics, and asset management. I learned how institutional portfolios are actually bounded by financial realities, why data work takes a large share of any quantitative project, and why plain accounting ratios were hard to beat in my test. Finding where algorithms fail under real-world constraints was the most useful lesson I have learned in school.
 
 ---
 
@@ -44,7 +44,7 @@ This platform and its accompanying academic study address this central empirical
 
 ## 2. Platform Architecture & System Principles
 
-The platform decouples qualitative textual intelligence from pure quantitative valuation to guarantee fiduciary auditability:
+The platform decouples qualitative textual intelligence from pure quantitative valuation to keep every valuation step easy to audit:
 
 ```
 [SEC EDGAR XBRL Facts & Form 10-K Submissions]
@@ -59,21 +59,21 @@ The platform decouples qualitative textual intelligence from pure quantitative v
              [Baseline Model A]            [The Valuation Bridge v1.0]
                       \                              /
                        ↓                            ↓
-               [Interactive Institutional Research Terminal]
+               [Interactive Research Terminal]
                    (Streamlit 6-Page Analytical Suite)
 ```
 
 ### Core Design Principles
-1. **Mathematical Determinism:** Intrinsic valuation models (DCF, WACC, Reverse DCF) are implemented in pure Python and are 100% deterministic. No stochastic AI outputs directly modify cash flow projections.
-2. **Point-in-Time (PIT) Temporal Integrity:** Every regulatory statement and filing is governed by its microsecond SEC EDGAR acceptance timestamp (`acceptance_datetime <= cutoff 23:59:59`). In HISTORICAL mode, lookahead leakage is structurally impossible.
+1. **Mathematical Determinism:** Intrinsic valuation models (DCF, WACC, Reverse DCF) are implemented in pure Python and are deterministic. No stochastic AI outputs directly modify cash flow projections.
+2. **Point-in-Time (PIT) Temporal Integrity:** Every regulatory statement and filing is governed by its microsecond SEC EDGAR acceptance timestamp (`acceptance_datetime <= cutoff 23:59:59`). In HISTORICAL mode, the design is meant to prevent lookahead leakage.
 3. **Auditable Valuation Bridge (`valuation_bridge_v1.0`):** Narrative disclosures cannot hallucinate arbitrary valuation adjustments. Qualitative claims are mapped to bounded, pre-specified parameter shifts (e.g., margin haircuts $\Delta m \in [-120\text{ bps}, 0\text{ bps}]$; WACC penalties $\Delta WACC \in [0\text{ bps}, +50\text{ bps}]$).
-4. **End-to-End Data Lineage:** Every analytical metric and claim displayed in the terminal links directly back to its primary source accession number and SEC EDGAR archive URL.
+4. **Data Lineage:** Metrics shown in the terminal link back to their source accession number and SEC EDGAR archive URL.
 
 ---
 
 ## 3. Data Universe & Ingestion Pipeline
 
-The empirical laboratory evaluates 30 U.S. large-cap non-financial equities spanning six Global Industry Classification Standard (GICS) sectors over the 2014–2024 reporting decade:
+The empirical laboratory evaluates 30 U.S. large-cap non-financial equities spanning six Global Industry Classification Standard (GICS) sectors over the 2014 to 2024 reporting decade:
 
 * **Technology:** AAPL, MSFT, NVDA, GOOGL, META
 * **Consumer Discretionary:** AMZN, TSLA, HD, NKE, MCD
@@ -126,17 +126,17 @@ The primary empirical investigation evaluated out-of-sample forward operating ma
 +---------------------------------------------------------------------------------------+
 ```
 
-### Key Scientific Takeaways
+### Key Takeaways
 1. **No Incremental Predictive Power:** Under strict chronological walk-forward out-of-sample testing, Model B (Baseline + Operational Text) fails to reject the null hypothesis of equal forecast accuracy ($p = 0.2335$; bootstrap 95% CI crosses zero).
-2. **Failure of Cross-Sectional Alpha to Replicate:** In Phase 6 exploratory cross-sectional testing ($N=30$, LOOCV), operational risk features showed suggestive predictive gains ($\Delta\text{MAE} = -4.3\%$, $p=0.0409$). However, this apparent advantage completely vanished when subjected to chronological walk-forward barriers.
-3. **Severe Degradation from High-Dimensional Text:** Adding broader text features strictly degrades out-of-sample performance. The Management Group worsens MAE by $-7.62\%$ ($p = 0.0080$), and the Omnibus 12-feature model worsens MAE by $-13.14\%$ ($p = 0.0045$, $\text{RMSE} = 0.1541$).
-4. **Filing-Only Parity:** A model conditioned *only* on filing text features achieves an MAE of $0.0771$ ($p = 0.8714$), achieving parity with, but zero incremental value over, trailing accounting ratios.
+2. **Failure of Cross-Sectional Alpha to Replicate:** In Phase 6 exploratory cross-sectional testing ($N=30$, LOOCV), operational risk features showed suggestive predictive gains ($\Delta\text{MAE} = -4.3\%$, $p=0.0409$). However, this apparent advantage did not hold up in the chronological walk-forward test.
+3. **More Text Features Made Forecasts Worse:** Adding broader text features worsened out-of-sample performance. The Management Group worsens MAE by $-7.62\%$ ($p = 0.0080$), and the Omnibus 12-feature model worsens MAE by $-13.14\%$ ($p = 0.0045$, $\text{RMSE} = 0.1541$).
+4. **Filing-Only Parity:** A model conditioned *only* on filing text features achieves an MAE of $0.0771$ ($p = 0.8714$), matching trailing accounting ratios but adding nothing beyond them.
 
 ---
 
-## 6. Interactive Institutional Research Terminal
+## 6. Interactive Research Terminal
 
-The visual presentation layer is built with Streamlit and organized into six institutional analytical modules:
+The visual presentation layer is built with Streamlit and organized into six pages:
 
 ```bash
 streamlit run app/main.py
@@ -198,9 +198,9 @@ streamlit run app/main.py
 │   ├── INDEX.md                           # Comprehensive Documentation Index
 │   ├── RESEARCH_PAPER.md                  # 18-Section Academic Working Paper + Appendices A-F
 │   ├── REPRODUCIBILITY_GUIDE.md           # Step-by-step CLI replication instructions
-│   ├── EXPERIMENT_REGISTRY.md             # Immutable registry of all 7 empirical experiments
+│   ├── EXPERIMENT_REGISTRY.md             # Registry of all 7 empirical experiments
 │   └── DATA_PROVENANCE.md                 # Data lineage, schemas, and PIT rules
-├── results/                               # Authoritative tabular empirical outputs
+├── results/                               # Tabular empirical outputs
 │   └── tables/                            # Locked CSV and JSON experiment tables
 ├── src/                                   # Core Analytical Engines
 │   ├── data/                              # SEC Crawler & pipeline orchestrators
