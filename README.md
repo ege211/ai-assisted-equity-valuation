@@ -10,6 +10,22 @@
 
 ---
 
+## Summary
+
+![Forecast error of accounting ratios alone versus models with 10-K text features](results/figures/model_vs_accounting_ratios.png)
+
+**Research question.** Can the text of 10-K annual reports predict next-year changes in a firm's operating (EBIT) margin better than simple accounting ratios?
+
+**Data and method.** 30 US non-financial large-cap firms, 10-K filings and XBRL data from SEC EDGAR, 2014 to 2024. Ridge regression, tested out of sample in a chronological walk-forward design (46 complete cases over two folds) and compared by mean absolute error (MAE).
+
+**Main finding.** The text did not beat the accounting ratios. Adding operational text changed the error by 0.6% (p = 0.23), which is not significant, and adding all 12 text features made forecasts 13.1% worse (p = 0.005). The filings were full of the same standard wording, so the text added little that the ratios did not already show.
+
+**Limitations.** Small sample (20 test cases in the main fold), large firms only (survivorship bias), and an earlier cross-sectional result (p = 0.04) did not hold up in the time-ordered test. Details in section 10.
+
+**Repository structure.** Data pipeline in `scripts/` and `src/`, results tables in `results/tables/`, the research paper in `docs/RESEARCH_PAPER.md`, and a Streamlit app in `app/`. Full map in section 8.
+
+---
+
 ## Student Note: Why I Built This and What the Process Taught Me
 
 ### 1. The Spark: Trying to Understand How Real Funds Pick Stocks
